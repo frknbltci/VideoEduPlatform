@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+@model MehmetEgitKurumsal.UI.Models.PageVM
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Sayfaları Düzenleme Ekranı </h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-striped table-bordered default-ordering">
+                            <thead>
+                                <tr>
+                                    <th>Sayfa Adı</th>
+                                    <th>Sayfa Url</th>
+                                    <th>Son Güncelleme Tarihi</th>
+                                    <th>Düzenle</th>
+                                    <th>Durumu</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.PageList)
+                                {
+
+                                    <tr>
+                                        <td>
+
+                                            @item.Title
+
+                                        </td>
+                                        <td>
+
+
+                                            @item.SeoUrl
+
+                                        </td>
+
+
+                                        <td>
+                                            @item.CreatedAt.Value.Date
+                                        </td>
+
+                                        <td>
+
+                                            <a blogId="@item.ID" class="btn btn-warning btn-sm editBlogPost" href="/Page/EditPage/@item.ID">Düzenle </a>
+
+                                        </td>
+
+                                        <td>
+                                            @if (item.Status == false)
+                                            {
+                                                <input blogid="@item.ID" data-toggle="modal" data-target="#PageMakeActive" class="btn btn-secondary btn-sm btn-secondary takeIdPage" type="button" value="Aktif Yap">
+                                            }
+                                            else
+                                            {
+                                                <input blogid="@item.ID" data-toggle="modal" data-target="#PageMakePassive" class="btn btn-success btn-sm takeIdPage" type="button" value="Pasif Yap">
+                                            }
+
+                                        </td>
+
+                                    </tr>
+
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- make Passive And Active -->
+<div class="modal fade" id="PageMakePassive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sayfayı Pasifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makePassivePageYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div> 
+    </div>
+</div>
+
+
+<div class="modal fade" id="PageMakeActive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sayfayı Aktifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makeActivePageYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>

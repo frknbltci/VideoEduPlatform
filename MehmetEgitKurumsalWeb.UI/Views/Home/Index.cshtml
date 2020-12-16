@@ -1,0 +1,710 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutMain.cshtml";
+
+    var operations = new MehmetEgitKurumsal.StringOperations.StringOperations();
+}
+
+@model MehmetEgitKurumsalWeb.UI.Models.HomeVM
+
+
+<!-- <a href="#"> -->
+<div class="page-section" id="home-slider-link" style="background:url(@Model.Slider.ImageUrl) no-repeat;background-size:cover;padding:212px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="cs-column-text">
+                    <span style="display:inline-block;padding:10px 20px;background:rgba(0,0,0,0.8);color:#FFF;font-size:18px;margin-bottom:22px;">@Model.Slider.Title </span>
+
+                    <font style="display:block; color:#ffffff!important;line-height:64px !important;text-transform:capitalize !important; font-size:50px!important;"> @Model.Slider.Text </font>
+
+                    <p style="font-size:36px !important;line-height:42px !important;color:#FFF !important;font-weight:400 !important;margin-bottom:30px;"></p>
+
+                    <a style="font-size:13px;font-weight:700;line-height:19px;padding:16px 28px;border-radius:50px;color:#FFF;text-decoration:none;outline:none;" class="cs-bgcolor" href="@Model.Slider.Link">@Model.Slider.ButtonName</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </a> -->
+
+<div class="page-section">
+    <div class="container">
+        <div class="row">
+            <!-- Yorumlar -->
+            <div class="page-section" style="margin-bottom:30px;">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                            <div class="cs-element-title" style="margin-bottom:30px;">
+
+                                <h2>MEHMET EĞİT SİSTEM DUYURULARI</h2>
+                            </div>
+                        </div>
+
+                        <ul class="cs-teamlist-slider" style="text-align: center;">
+
+                            @foreach (var item in Model.AnnouncementList)
+                            {
+
+
+                                <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="#" annId="@item.ID" data-target="#AnPopUp" data-toggle="modal" class="cs-color sendDataAnnoun" style="text-transform: capitalize!important;">
+                                        <div class="cs-team listing loop">
+
+
+                                            <div class="cs-text">
+
+                                                <h5>@item.Title</h5>
+
+                                                <span></span>
+
+                                                <p>
+
+                                                    @item.Description
+
+
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+                                    </a>
+                                </li>
+
+
+                            }
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Site Analiz -->
+
+<div class="page-section" style="background-color:#f9fafa; padding:50px 0;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="section-fullwidtht col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <ul class="row cs-counter-holder">
+
+                    <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                        <div class="cs-counter simple center">
+
+                            <div class="cs-text">
+
+                                <strong class="counter cs-color">@Model.GeneralSettings.UserCount</strong>
+
+                                <span style="text-transform: capitalize!important;">Kayıtlı Öğrenci </span>
+
+                                <p style="text-transform: capitalize!important;">Video Derslerimizi İzleyen Öğrenci Sayımız</p>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                        <div class="cs-counter simple center">
+
+                            <div class="cs-text">
+
+                                <strong class="counter cs-color">@Model.GeneralSettings.EducationVideoCount</strong>
+
+                                <span style="text-transform: capitalize!important;">Eğitim Videosu</span>
+
+                                <p style="text-transform: capitalize!important;">Sitemizde Bulunan Toplam Video Sayısı</p>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                    <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                        <div class="cs-counter simple center">
+
+                            <div class="cs-text">
+
+                                <strong class="counter cs-color">@Model.GeneralSettings.WatchHour</strong>
+
+                                <span style="text-transform: capitalize!important;">İzlenen Ders Saati</span>
+
+                                <p style="text-transform: capitalize!important;">Şu ana kadar izlenen toplam ders saati.</p>
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Son Blog Yazılarımız ve Bilgi Sayfalarımız-->
+<div class="page-section" style="background:#f9fafa;margin-bottom:82px;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <aside class="section-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                <h5 class="text-center">SON BLOG YAZILARIMIZ</h5>
+
+                <div class="widget cs-widget-links">
+
+                    <ul>
+                        @foreach (var item in Model.BlogList)
+                        {
+                            <li><a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})"> @item.BlogName</a></li>
+
+                        }
+
+                    </ul>
+
+                </div>
+
+            </aside>
+
+            <div class="page-content col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                <div class="row">
+
+                    <div class="cs-section-title">
+
+                        <h2>BİLGİ SAYFALARIMIZ</h2>
+
+                    </div>
+
+
+                    @foreach (var item in Model.BilgiSayfalariList)
+                    {
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                            <div class="cs-courses courses-grid">
+
+                                <div class="cs-media">
+                                    <a href="@Url.Action("Details","Page",new { SeoUrl=item.SeoUrl})">
+                                        <figure>
+                                            @if (item.ImgUrl != null)
+                                            {
+                                                <img src="@item.ImgUrl" class="img-responsive" style="width:350px!important; height: 220px!important; margin-left:auto; margin-right: auto">
+                                            }
+                                            else
+                                            {
+
+                                                <img src="~/Assets/Images/demo.png" class="img-responsive" style="width:350px!important; height: 220px!important; margin-left:auto; margin-right: auto">
+                                            }
+
+                                        </figure>
+                                    </a>
+
+                                </div>
+
+                                <div class="cs-text">
+
+
+
+                                    <div class="cs-post-titless">
+
+                                        <h6 class="text-center"><a href="/tyt-ayt-ozel-ders-al/">@item.Title</a></h6>
+
+                                    </div>
+
+                                    <p class="text-center" style="margin-left:auto; margin-right:auto; width:100px; font-weight: bold; color: #222!important;"></p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--Eğitimler -->
+
+<div class="page-section">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="cs-element-title" style="margin-bottom:30px;">
+
+                            <h2>TARİH EĞİTİMLERİ</h2>
+
+                        </div>
+                    </div>
+                    <ul class="cs-bloggrid-slider-sm">
+
+                        @foreach (var item in Model.tarihList)
+                        {
+                            <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                                <div class="cs-blog blog-grid">
+
+                                    <div class="cs-media">
+
+                                        <figure>
+                                            <a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})">
+                                                @if (item.ImageUrl != null)
+                                                {
+                                                    <img src="@item.ImageUrl" class="img-responsive" style="width:270px!important; height: 180px!important; margin-left:auto; margin-right: auto">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/Assets/Images/demo.png" class="img-responsive" style="width:270px!important; height: 180px!important; margin-left:auto; margin-right: auto">
+                                                }
+
+
+                                            </a>
+                                        </figure>
+
+                                    </div>
+
+                                    <div class="cs-blog-text">
+
+                                        <div class="post-options">
+
+                                            <span class="post-date" style="margin-left: 100px;">@item.CreatedAt.Value.Day/@item.CreatedAt.Value.Month/@item.CreatedAt.Value.Year</span>
+
+                                        </div>
+
+                                        <div class="post-titless">
+                                            <h6><a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})">@item.BlogName</a></h6>
+
+                                            @if (item.BlogContent.Length > 0 && item.BlogContent.Length < 20)
+                                            {<p>
+
+                                                    @item.BlogContent.Substring(0, 10);
+
+                                                </p>
+                                            }
+                                            else if (item.BlogContent == null)
+                                            {
+                                                <p> @item.BlogContent </p>
+                                            }
+                                            else if (item.BlogContent.Length > 20 && item.BlogContent.Length < 40)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 20); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 40 && item.BlogContent.Length < 60)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 40); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 60 && item.BlogContent.Length < 80)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 60); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 80 && item.BlogContent.Length < 100)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 80); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 100)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 100); </p>
+                                            }
+                                            else
+                                            {
+                                                <p> @item.BlogContent </p>
+                                            }
+                                        </div>
+
+                                        <a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})" class="cs-readmore-btn">Devamını Oku</a>
+
+                                    </div>
+
+                                </div>
+
+                            </li>
+                        }
+
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="cs-element-title" style="margin-bottom:30px;">
+
+                            <h2>COĞRAFYA EĞİTİMLERİ</h2>
+                        </div>
+                    </div>
+                    <ul class="cs-bloggrid-slider-sm">
+                        @foreach (var item in Model.cografyaList)
+                        {
+                            <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                                <div class="cs-blog blog-grid">
+
+                                    <div class="cs-media">
+
+                                        <figure>
+                                            <a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})">
+
+
+                                                @if (item.ImageUrl != null)
+                                                {
+                                                    <img src="@item.ImageUrl" class="img-responsive" style="width:270px!important; height: 180px!important; margin-left:auto; margin-right: auto">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/Assets/Images/demo.png" class="img-responsive" style="width:270px!important; height: 180px!important; margin-left:auto; margin-right: auto">
+                                                }
+
+
+                                            </a>
+                                        </figure>
+
+                                    </div>
+
+                                    <div class="cs-blog-text">
+
+                                        <div class="post-options">
+
+                                            <span class="post-date" style="margin-left: 100px;">@item.CreatedAt.Value.Day/@item.CreatedAt.Value.Month/@item.CreatedAt.Value.Year</span>
+
+                                        </div>
+
+
+
+                                        <div class="post-titless">
+                                            <h6><a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})">@item.BlogName</a></h6>
+
+                                            @if (item.BlogContent.Length > 0 && item.BlogContent.Length < 20)
+                                            {<p>
+
+                                                    @item.BlogContent.Substring(0, 10);
+
+                                                </p>
+                                            }
+                                            else if (item.BlogContent == null)
+                                            {
+                                                <p> @item.BlogContent </p>
+                                            }
+                                            else if (item.BlogContent.Length > 20 && item.BlogContent.Length < 40)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 20); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 40 && item.BlogContent.Length < 60)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 40); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 60 && item.BlogContent.Length < 80)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 60); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 80 && item.BlogContent.Length < 100)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 80); </p>
+                                            }
+                                            else if (item.BlogContent.Length > 100)
+                                            {
+                                                <p> @item.BlogContent.Substring(0, 100); </p>
+                                            }
+                                            else
+                                            {
+                                                <p> @item.BlogContent </p>
+                                            }
+
+                                        </div>
+
+                                        <a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})" class="cs-readmore-btn">Devamını Oku</a>
+
+                                    </div>
+
+                                </div>
+
+                            </li>
+
+                        }
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                <!-- Form Kısmı-->
+                <div class="cs-find-search">
+
+                    <h6 style="text-align: center;">Bize Ulaşın</h6>
+
+                    <span style="text-align: center;">Bizimle iletişime geçiniz.</span>
+
+                    <form action="" method="post">
+                        <div class="cs-input-area">
+                            <div class="cs-input-holder">
+                                <a id="errNameSurnameContact" class="hidden" style="color:red; text-decoration:none;">*</a>
+                                <input type="text" name="contactNameSurname" id="contactNameSurname" placeholder="Adınız ve Soyadınız" />
+                            </div>
+                            <div class="cs-input-holder">
+                                <a id="errEmailContact" class="hidden" style="color:red; text-decoration:none;">*</a>
+                                <input type="text" name="Email" id="contactEmail" placeholder="Mail Adresiniz">
+                            </div>
+
+                            <div class="cs-input-holder">
+                                <a id="errPhoneContact" class="hidden" style="color:red; text-decoration:none;">*</a>
+                                <input type="text" name="Phone" id="contactPhone" placeholder="Telefon Numaranız">
+                            </div>
+                        </div>
+                        <button type="button" id="sendInfoContact" class="cs-bgcolor" style="width:150px!important;">Mehmet Eğit Başvuru</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Eğitmenlerimiz -->
+<div class="page-section" style="margin-bottom:100px;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="cs-element-title" style="margin-bottom:30px;">
+                    <h2>VİDEO EĞİTİM HOCALARIMIZ</h2>
+                </div>
+
+            </div>
+
+            <ul class="cs-teamlist-slider">
+                @foreach (var item in Model.TeacherList)
+                {
+                    <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="cs-team listing loop">
+                            <div class="cs-media">
+                                <figure>
+                                    <a href="/@item.Address"><img src="@item.ImgUrl" alt=""></a>
+                                </figure>
+                            </div>
+                            <div class="cs-text">
+                                <h5 style="text-align: center;"><a href="/@item.Address" class="cs-color">"@item.Name @item.Surname"</a></h5>
+                                <span style="text-align: center;">@item.SubTitle</span>
+                                <p>@item.Description</p>
+                                <div class="cs-social-media">
+                                    <ul>
+                                        <li style="margin-right:5px !important;"><a target="_blank" href="//@item.FacebookUrl" data-original-title="facebook"><i class="fa fa-facebook"></i></a></li>
+                                        <li style="margin-right:5px !important;"><a target="_blank" href="//@item.TwitterUrl" data-original-title="twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li style="margin-right:5px !important;"><a style="background-color: #CC008D;" target="_blank" href="//@item.InstagramUrl" data-original-title="instagram"><i class="fa fa-instagram" style="color:#fff;"></i></a></li>
+                                      
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                }
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="page-section" style="margin-bottom:28px;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="cs-team">
+
+                    <div class="row">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                            <div class="cs-element-title" style="margin-bottom:30px;">
+
+                                <a href="#"><h1 style="font-size:14px; text-align:center; margin-top:20px;"><strong>SİSTEM BİLGİ SAYFALARI</strong></h1></a>
+                            </div>
+
+                        </div>
+
+
+                        @foreach (var item in Model.SistemBilgiList)
+                        {
+
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+
+                                <div class="cs-team fancy">
+
+                                    <div class="cs-media">
+
+                                        <figure>
+
+                                            <a href="@Url.Action("Details","Page",new { SeoUrl=item.SeoUrl})">
+                                                @if (item.ImgUrl != null)
+                                                {
+                                                    <img src="@item.ImgUrl" class="img-responsive" style="width:270px!important; height: 180px!important; margin-left:auto; margin-right: auto">
+                                                }
+                                                else
+                                                {
+
+                                                    <img src="~/Assets/Images/demo.png" class="img-responsive" style="width:270px!important; height: 180px!important; margin-left:auto; margin-right: auto">
+
+                                                }
+                                            </a>
+
+                                        </figure>
+
+                                    </div>
+
+                                    <div class="cs-s">
+
+                                        <h5 style="text-align:center;"><a class="cs-color" href="@Url.Action("Details","Page",new { SeoUrl=item.SeoUrl})">@item.Title</a></h5>
+
+                                        <center><span>@item.CreatedAt.Value.Day/@item.CreatedAt.Value.Month/@item.CreatedAt.Value.Year</span></center>
+
+                                        @if (item.Text.Length > 0 && item.Text.Length < 20)
+                                        {<p>
+
+                                                @item.Text.Substring(0, 10);
+
+                                            </p>
+                                        }
+                                        else if (item.Text == null)
+                                        {
+                                            <p> @item.Text </p>
+                                        }
+                                        else if (item.Text.Length > 20 && item.Text.Length < 40)
+                                        {
+                                            <p> @item.Text.Substring(0, 20); </p>
+                                        }
+                                        else if (item.Text.Length > 40 && item.Text.Length < 60)
+                                        {
+                                            <p> @item.Text.Substring(0, 40); </p>
+                                        }
+                                        else if (item.Text.Length > 60 && item.Text.Length < 80)
+                                        {
+                                            <p> @item.Text.Substring(0, 60); </p>
+                                        }
+                                        else if (item.Text.Length > 80 && item.Text.Length < 100)
+                                        {
+                                            <p> @item.Text.Substring(0, 80); </p>
+                                        }
+                                        else if (item.Text.Length > 100)
+                                        {
+                                            <p> @item.Text.Substring(0, 100); </p>
+                                        }
+                                        else
+                                        {
+                                            <p> @item.Text </p>
+                                        }
+
+                                        <a href="@Url.Action("Details","Page",new { SeoUrl=item.SeoUrl})" class="cs-readmore-btn">Devamını Oku</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="AnPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Duyuruyu İçeriği</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <span id="anCont"></span>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+</script>
+

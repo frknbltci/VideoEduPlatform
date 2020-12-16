@@ -1,0 +1,15 @@
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.pdb
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.UTILITIES.csprojAssemblyReference.cache
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.UTILITIES.csproj.CoreCompileInputs.cache
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.pdb
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.BLL.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.DAL.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\EntityFramework.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.BLL.pdb
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.BLL.dll.config
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.DAL.pdb
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.DAL.dll.config
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\EntityFramework.xml
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.UTILITIES.csproj.CopyComplete

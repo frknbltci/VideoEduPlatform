@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MehmetEgitKurumsalModelStoreContainer" CdmEntityContainer="MehmetEgitKurumsalEntities">
+    <EntitySetMapping Name="Announcements">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Announcement">
+        <MappingFragment StoreEntitySet="Announcement">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+          <ScalarProperty Name="ActOrPass" ColumnName="ActOrPass" />
+          <ScalarProperty Name="AnContent" ColumnName="AnContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogs">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Blog">
+        <MappingFragment StoreEntitySet="Blog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="SeoUrl" ColumnName="SeoUrl" />
+          <ScalarProperty Name="BlogName" ColumnName="BlogName" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="BlogContent" ColumnName="BlogContent" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogCategories">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.BlogCategory">
+        <MappingFragment StoreEntitySet="BlogCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CatName" ColumnName="CatName" />
+          <ScalarProperty Name="CatSeoUrl" ColumnName="CatSeoUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlogComments">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.BlogComment">
+        <MappingFragment StoreEntitySet="BlogComment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="AnswerCommentID" ColumnName="AnswerCommentID" />
+          <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Topic" ColumnName="Topic" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactMains">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.ContactMain">
+        <MappingFragment StoreEntitySet="ContactMain">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galeries">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Galery">
+        <MappingFragment StoreEntitySet="Galery">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralSettings">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.GeneralSetting">
+        <MappingFragment StoreEntitySet="GeneralSettings">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+          <ScalarProperty Name="FacebookUrl" ColumnName="FacebookUrl" />
+          <ScalarProperty Name="TwitterUrl" ColumnName="TwitterUrl" />
+          <ScalarProperty Name="InstagramUrl" ColumnName="InstagramUrl" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="GoogleMapsCode" ColumnName="GoogleMapsCode" />
+          <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+          <ScalarProperty Name="EducationVideoCount" ColumnName="EducationVideoCount" />
+          <ScalarProperty Name="WatchHour" ColumnName="WatchHour" />
+          <ScalarProperty Name="FooterNote" ColumnName="FooterNote" />
+          <ScalarProperty Name="YoutubeUrl" ColumnName="YoutubeUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+          <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+          <ScalarProperty Name="ActOrPass" ColumnName="ActOrPass" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packets">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Packet">
+        <MappingFragment StoreEntitySet="Packet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+          <ScalarProperty Name="PacketDesc" ColumnName="PacketDesc" />
+          <ScalarProperty Name="PacketImgUrl" ColumnName="PacketImgUrl" />
+          <ScalarProperty Name="SeoUrlLink" ColumnName="SeoUrlLink" />
+          <ScalarProperty Name="PacketPrice" ColumnName="PacketPrice" />
+          <ScalarProperty Name="ActOrPass" ColumnName="ActOrPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Page">
+        <MappingFragment StoreEntitySet="Page">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="SeoUrl" ColumnName="SeoUrl" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchases">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Purchase">
+        <MappingFragment StoreEntitySet="Purchase">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="PacketID" ColumnName="PacketID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="sOrderID" ColumnName="sOrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sliders">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Slider">
+        <MappingFragment StoreEntitySet="Slider">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ButtonName" ColumnName="ButtonName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Resume" ColumnName="Resume" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="MemberShipDate" ColumnName="MemberShipDate" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="MailKey" ColumnName="MailKey" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Video">
+        <MappingFragment StoreEntitySet="Video">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+          <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+          <ScalarProperty Name="VideoDescription" ColumnName="VideoDescription" />
+          <ScalarProperty Name="Preview" ColumnName="Preview" />
+          <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="PacketID" ColumnName="PacketID" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="VideoLength" ColumnName="VideoLength" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoEducationTeachers">
+      <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.VideoEducationTeacher">
+        <MappingFragment StoreEntitySet="VideoEducationTeacher">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TwitterUrl" ColumnName="TwitterUrl" />
+          <ScalarProperty Name="InstagramUrl" ColumnName="InstagramUrl" />
+          <ScalarProperty Name="FacebookUrl" ColumnName="FacebookUrl" />
+          <ScalarProperty Name="LinkedinUrl" ColumnName="LinkedinUrl" />
+          <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

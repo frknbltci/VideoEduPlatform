@@ -1,0 +1,262 @@
+﻿
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+@model List<MehmetEgitKurumsal.DAL.DB.Announcement>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Duyuruları Düzenle</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <button type="button" data-toggle="modal" data-target="#addAnnoun" class="btn btn-primary">Duyuru Ekle</button>
+
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-striped table-bordered default-ordering">
+                            <thead>
+                                <tr>
+                                    <th>Başlık</th>
+                                    <th>Duyuru İçeriği</th>
+                                    <th>Gösterilme Sırası</th>
+                                    <th>Düzenle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.SortNumber</td>
+
+                                    @if (item.ActOrPass == true)
+                                    {
+
+                                        <td>
+                                            <button data-toggle="modal" announid="@item.ID" data-target="#editAnnouncement" class="btn btn-warning btn-sm AnnouncementEdit">Düzenle</button>
+                                            <button data-toggle="modal" announid="@item.ID" data-target="#AnnounMakePassive" class="btn btn-success btn-sm AnnounActOrPass">Aktif</button>
+                                        </td>
+
+                                    }
+                                    else
+                                    {
+                                <td>
+                                    <button data-toggle="modal" announid="@item.ID" data-target="#editAnnouncement" class="btn btn-warning btn-sm AnnouncementEdit">Düzenle</button>
+                                    <button data-toggle="modal" announid="@item.ID" data-target="#AnnounMakeActive" class="btn btn-secondary btn-sm AnnounActOrPass">Pasif</button>
+                                </td>
+                                    }
+
+
+                                </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* editAnnounCement*@
+<div class="modal fade" id="editAnnouncement" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Duyuru Düzenleme Ekranı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="editAnnounTitle">Başlık<span style="color:red;" id="editAnnounSortTitleErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Başlık" id="editAnnounTitle">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="editAnnounDesc">Kısa Açıklama<span style="color:red;" id="editAnnounDescErr" class="hidden">*</span></label>
+                            <div class="input-group col-sm-9">
+
+                                <textarea class="form-control" aria-label="With textarea" id="editAnnounDesc"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="editAnnounSortNum">Sıralama<span style="color:red;" id="AnoounEditsortNumberErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="number" placeholder="Sıralama Numarası" id="editAnnounSortNum">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="editAnContent">Duyuru İçeriği</label>
+                            <div class="input-group col-sm-9">
+
+                                <textarea class="form-control" aria-label="With textarea" id="editAnContent"></textarea>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button id="editAnnounSend" type="button" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Add Menu*@
+
+<div class="modal fade" id="addAnnoun" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Duyuru Ekleme Ekranı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addAnnounTitle">Başlık<span style="color:red;" id="addAnnounSortTitleErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Başlık" id="addAnnounTitle">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addAnnounDesc">Kısa Açıklama<span style="color:red;" id="addAnnounDescErr" class="hidden">*</span></label>
+                            <div class="input-group col-sm-9">
+
+                                <textarea class="form-control" aria-label="With textarea" id="addAnnounDesc"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addAnnounSortNum">Sıralama<span style="color:red;" id="AnoounAddsortNumberErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="number" placeholder="Sıralama Numarası" id="addAnnounSortNum">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addAnContent">Duyuru İçeriği</label>
+                            <div class="input-group col-sm-9">
+
+                                <textarea class="form-control" aria-label="With textarea" id="addAnContent"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addAnnradioStatus">Çalışma Durumu</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <fieldset class="radio">
+                                        <label>
+                                            <input type="radio" class="addAnnradioStatus" name="addAnnradioStatus" checked value="true"> Aktif
+                                        </label>
+                                    </fieldset>
+                                    <fieldset class="radio">
+                                        <label>
+                                            <input type="radio" class="addAnnradioStatus" name="addAnnradioStatus" value="false">Pasif
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button id="addAnnounSend" type="button" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- make passive -->
+<div class="modal fade" id="AnnounMakePassive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Duyuruyu Pasifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makePassiveAnnounYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="AnnounMakeActive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Duyuruyu Aktifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makeActiveAnnounYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>

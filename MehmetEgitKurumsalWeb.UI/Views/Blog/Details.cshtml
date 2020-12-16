@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutMain.cshtml";
+
+
+}
+@model MehmetEgitKurumsalWeb.UI.Models.BlogVM
+
+@{if (@ViewBag.yok != null)
+    {
+        <div><h3 class="text-center">@Html.Raw(@ViewBag.yok)</h3></div>
+    }
+    else
+    {
+        <h5 style="text-align:center;">@Model.BlogDetail.BlogName</h5>
+        <div class="container">
+
+            @Html.Raw(@Model.BlogDetail.BlogContent)
+
+            <italic>Düzenlenme Tarihi :  @Model.BlogDetail.UpdatedAt.Value.Day/@Model.BlogDetail.UpdatedAt.Value.Month/@Model.BlogDetail.UpdatedAt.Value.Year</italic>
+        </div>
+       
+
+    }
+}
+
+
+
+

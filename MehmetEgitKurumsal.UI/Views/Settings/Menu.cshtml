@@ -1,0 +1,269 @@
+﻿
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+@model  MehmetEgitKurumsal.UI.Models.MenuVM
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Menüleri Düzenle</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <button type="button" data-toggle="modal" data-target="#addMenu" class="btn btn-primary">Menü Ekle</button>
+
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-striped table-bordered default-ordering">
+                            <thead>
+                                <tr>
+                                    <th>Başlık</th>
+                                    <th>Link</th>
+                                    <th>Alt Başlık</th>
+                                    <th>Sıralama</th>
+                                    <th>Düzenle/Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model.MenuList)
+                                {
+                                    <tr>
+                                        <td>@item.Title</td>
+                                        <td>@item.Link</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.SortNumber</td>
+
+                                        @if (item.ActOrPass == true)
+                                        {
+                                            <td>
+                                                <button data-toggle="modal" menuid="@item.ID" data-target="#editMenu" class="btn btn-warning btn-sm menuEdit">Düzenle</button>
+                                                <button data-toggle="modal" menuid="@item.ID" data-target="#makePassive" class="btn btn-success btn-sm menuActOrPass">Aktif</button>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <button data-toggle="modal" menuid="@item.ID" data-target="#editMenu" class="btn btn-warning btn-sm menuEdit">Düzenle</button>
+                                                <button data-toggle="modal" menuid="@item.ID" data-target="#makeActive" class="btn btn-secondary btn-sm menuActOrPass">Pasif</button>
+                                            </td>
+                                        }
+
+
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* editMenu*@
+<div class="modal fade" id="editMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Menü Düzenleme Ekranı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="editTitle">Başlık<span style="color:red;" id="editTitleErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Başlık" id="editTitle">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="editLink">Link<span style="color:red;" id="editLinkErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Link " id="editLink">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="subTitle">Alt Başlık<span style="color:red;" id="subTitleErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Alt Başlık" id="subTitle">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="sortNumber">Sıralama<span style="color:red;" id="sortNumberErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="number" placeholder="Sıralama Numarası" id="sortNumber">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button id="menuEditSend" type="button" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Add Menu*@
+
+<div class="modal fade" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Menü Ekleme Ekranı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addTitle">Başlık<span style="color:red;" id="addTitleErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Başlık" id="addTitle">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addLink">Link<span style="color:red;" id="addLinkErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Link " id="addLink">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addSubTitle">Alt Başlık<span style="color:red;" id="addSubTitleErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Alt Başlık" id="addSubTitle">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addSortNumber">Sıralama<span style="color:red;" id="addSortNumberErr" class="hidden">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="number" placeholder="Sıralama Numarası" id="addSortNumber">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="addMenuradioStatus">Çalışma Durumu</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <fieldset class="radio">
+                                        <label>
+                                            <input  type="radio" class="addMenuradioStatus" name="addMenuradioStatus" checked value="true"> Aktif
+                                        </label>
+                                    </fieldset>
+                                    <fieldset class="radio">
+                                        <label>
+                                            <input type="radio" class="addMenuradioStatus" name="addMenuradioStatus" value="false">Pasif
+                                        </label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button id="menuAddSend" type="button" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- make passive -->
+<div class="modal fade" id="makePassive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Menüyü Pasifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makePassiveMenuYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="makeActive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Menüyü Aktifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makeActiveMenuYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>

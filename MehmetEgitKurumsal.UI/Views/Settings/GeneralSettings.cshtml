@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewBag.Title = "GeneralSettings";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+@model MehmetEgitKurumsal.DAL.DB.GeneralSetting
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Sitenin Genel Ayarlarını Düzenleme Ekranı</h5>
+</div>
+<div class="modal-body">
+    <form class="form form-horizontal" id="editGeneralSubmit" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
+        <div class="form-body">
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="LogoUrl">Logo</label>
+                @if (Model.LogoUrl != null || Model.LogoUrl != "")
+                {
+                    <img id="previewGeneralLogoUrl" src="@Model.LogoUrl" class="rounded-circle img-border height-100" />
+                    <input readonly type="text" name="LogoUrlOld" id="LogoUrlOld" class="hidden" value="@Model.LogoUrl" />
+                
+                }
+                else
+                {
+                    <img id="previewGeneralLogoUrl" src="~/Assets/Images/noImgMan.jpg" class="rounded-circle img-border height-100" />
+                }
+                <div class="col-sm-4">
+
+                    <input class="form-control" type="file" name="LogoUrl" id="LogoUrl">
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="editLink">Meta Başlığı</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" placeholder="Meta Başlığı" value="@Model.MetaTitle" name="MetaTitle" id="generalMetaTitle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="editLink">Meta Açıklaması</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" name="MetaDescription" value="@Model.MetaDescription" type="text" placeholder="Meta Açıklaması " id="generalMetaDesc">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="editLink">Telefon</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" placeholder="Telefon" name="Phone" value="@Model.Phone" id="generalPhone">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="editLink">E-mail</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" placeholder="E-mail" name="Email" value="@Model.Email" id="generalMail">
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="subTitle">Adres</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" placeholder="Adres" name="Addres" value="@Model.Address" id="generalAdress">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="subTitle">Facebbok Linki</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" value="@Model.FacebookUrl" name="FacebookUrl" placeholder="Facebook Linki" id="facebookUrl">
+                    </div>
+                </div>
+            </div><div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="subTitle">Youtube Linki</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" value="@Model.YoutubeUrl" name="YoutubeUrl" placeholder="Youtube Linki" id="YoutubeUrl">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="subTitle">Twitter Linki</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" value="@Model.TwitterUrl" name="TwitterUrl" placeholder="Twitter Linki" id="twitterUrl">
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="subTitle">Instagram Linki</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" value="@Model.InstagramUrl" name="InstagramUrl" placeholder="Instagram Linki" id="instagramUrl">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="editLink">Google Harita Kodu</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <textarea class="form-control" name="GoogleMapsCode" id="generalGoogleMaps"> @Model.GoogleMapsCode </textarea>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalUserCount">Anasayfadaki Kullanıcı Sayısı</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="number" name="UserCount" value="@Model.UserCount" placeholder="Kullanıcı Sayısı Girin " id="generalUserCount">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalWatchHour">Anasayfadaki İzlenme Saati</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="number" name="WatchHour" value="@Model.WatchHour" placeholder="İzlenme Saati Girin " id="generalWatchHour">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalVideoCount">Anasayfadaki Video Sayısı</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="number" name="EducationVideoCount" value="@Model.EducationVideoCount" placeholder="Video Sayısı Girin " id="generalVideoCount">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalFooterNote">Footer Kısmındaki Notunuz</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" name="FooterNote" value="@Model.FooterNote" placeholder="Notunuzu Girin " id="generalFooterNote">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-dialog-centered">
+
+            <button id="generalSetSave" type="submit" class="btn btn-success col-xl-5">Kaydet</button>
+        </div>
+    </form>
+</div>
+

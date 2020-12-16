@@ -1,0 +1,12 @@
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\bin\Debug\MehmetEgitKurumsal.DAL.dll.config
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\bin\Debug\MehmetEgitKurumsal.DAL.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\bin\Debug\MehmetEgitKurumsal.DAL.pdb
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\bin\Debug\EntityFramework.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\bin\Debug\EntityFramework.xml
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\obj\Debug\MehmetEgitKurumsal.DAL.csprojAssemblyReference.cache
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\obj\Debug\MehmetEgitKurumsal.DAL.csproj.CoreCompileInputs.cache
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\obj\Debug\MehmetEgitKurumsal.DAL.csproj.CopyComplete
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\obj\Debug\MehmetEgitKurumsal.DAL.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal.DAL\obj\Debug\MehmetEgitKurumsal.DAL.pdb

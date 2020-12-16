@@ -1,0 +1,151 @@
+﻿body {
+}
+
+#packets {
+    margin-left: 2%;
+}
+
+ul.cs-bloggrid-slider-sm.slick-initialized.slick-slider {
+    height: 458px;
+}
+
+li.mns {
+    list-style-type: none;
+}
+
+nav.main-navigationcs li {
+    float: left;
+    margin-left: 21px;
+    margin-top: 25px;
+}
+
+    nav.main-navigationcs li a {
+        display: block;
+        color: #333333;
+        text-decoration: none;
+        font-size: 11px;
+        text-transform: uppercase;
+        outline: none;
+        font-weight: 700;
+        line-height: 16px;
+        position: relative;
+    }
+
+.menubar {
+    display: none;
+}
+
+.scHid {
+    display: none;
+}
+/*.menucs {
+    display: inline-block !important;
+}*/
+@media screen and (max-width:1000px) {
+    .menubar {
+        display: block;
+        color: darkred;
+        display: flex;
+        font-size: 34px;
+        width: 100% !important;
+        margin-top: 37px;
+        justify-content: center;
+    }
+
+        .menubar:hover > .menucs {
+            display: block !important;
+        }
+
+    nav.main-navigationcs li a {
+        color: #ffffff;
+    }
+
+    nav.main-navigationcs li {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+        background: darkred;
+        padding: 16px;
+    }
+}
+
+@media screen and (max-width:799px) {
+    .menubar {
+        display: block;
+        color: darkred;
+        display: flex;
+        font-size: 29px;
+        width: 100% !important;
+        margin-top: 40px;
+        margin-left: 20px;
+        justify-content: center;
+    }
+
+        .menubar:hover > .menucs {
+            display: block !important;
+        }
+
+    nav.main-navigationcs li a {
+        color: #ffffff;
+    }
+
+    nav.main-navigationcs li {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+        background: darkred;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .menubar {
+        display: block;
+        color: darkred;
+        display: flex;
+        font-size: 20px;
+        width: 100% !important;
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+        .menubar:hover > .menucs {
+            display: block !important;
+        }
+
+    nav.main-navigationcs li a {
+        color: #ffffff;
+    }
+
+    .subTitle {
+        color: #333333;
+    }
+
+    nav.main-navigationcs li {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+        background: darkred;
+        padding: 20px;
+    }
+
+    .sc {
+        display: inline-block;
+    }
+
+    .scHid {
+        display: inline-block;
+    }
+}
+span.hidden-xs.hidden-sm.subTitle {
+    font-size: 10px;
+}
+
+.menucs {
+    justify-content: center;
+    display: flex;
+}
+
+.infocs{
+    margin-top:15px;
+}

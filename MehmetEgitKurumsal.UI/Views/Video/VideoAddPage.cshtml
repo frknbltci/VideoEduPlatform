@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "VideoAddPage";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+<h5 style="display:flex; text-align:center;">Yapım Aşamasında</h5>
+
+@*<div class="content-header-title">
+    <h3>Video Ekleme Sayfası</h3>
+</div>
+<br />
+<div class="panel-body">
+
+
+    <div class="modal-content">
+        <div class="modal-header">
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="form form-horizontal" action="/Video/getVideo" method="post" enctype="multipart/form-data">
+                <div class="form-body">
+                    <div class="form-group row">
+                        <label class="col-sm-3 form-control-label" for="addName">Ad<span style="color:red;" id="errName" class="hidden">*</span></label>
+                        <div class="col-sm-9">
+                            <div class="position-relative has-icon-left">
+                                <input required class="form-control" type="file" id="VideoUrl" name="VideoUrl" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>*@
+
+<style>
+
+    .progress-bar {
+        height: 35px;
+        width: 250px;
+        border: 2px solid darkblue;
+    }
+
+    .progress-bar-fill {
+        height: 100px;
+        width: 25%;
+        background: lightblue;
+        display: flex;
+        align-items: center;
+        transition: width 0.25s;
+    }
+
+    .progress-bar-text {
+        margin-left: 10px;
+        font-weight: bold;
+    }
+</style>
+@*
+    <form class="form" id="uploadForm">
+
+        <input type="file" name="VideoUrl" id="VideoUrl" />
+        <input type="submit" value="Yükle"  />
+
+    </form>
+
+    <div class="progress-bar" id="progressBar">
+
+        <div class="progress-bar-fill">
+            <span class="progress-bar-text">0%</span>
+
+        </div>
+
+    </div>*@
+
+
+

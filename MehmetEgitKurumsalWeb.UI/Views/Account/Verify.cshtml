@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Verify</title>
+</head>
+<body>
+    <div>
+
+        <p class="hidden nereye" style="display:none;"> @ViewBag.nereye </p>
+
+       @Html.Raw(ViewBag.SuccessMessage)
+        
+
+
+    </div>
+
+
+    <script>
+
+        var nereye = document.getElementsByClassName('nereye');
+        if (nereye == 1) {
+            setInterval(function () {
+                window.location.href = "/Home/Index";   //Login Olma Sayfası
+                
+            },3000);
+        }
+        else {
+            setInterval(function () {
+                window.location.href = "/Home/Index";
+
+            }, 5000);
+        }
+
+
+    </script>
+</body>
+</html>

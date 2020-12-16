@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "createBlog";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+@model MehmetEgitKurumsal.UI.Models.BlogVM
+
+
+<h4>Blog Oluşturma Sayfası</h4>
+<div class="content-body">
+    <section id="basic">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
+                        <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                           
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <form id="sendBlogCreateInfo" >                    
+                                <div class="form-group row justify-content-center"> 
+                                    <div class="col-sm-8">
+                                        <div class="position-relative has-icon-left">
+                                            <img id="previewBlogImgUrl" src="~/Assets/Images/noImgMan.jpg" class="img-border height-100" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 form-control-label" for="BlogImgUrl">Blog Kapak Resmi</label>
+                                    <div class="col-sm-8">
+                                        <div class="position-relative has-icon-left">
+                                            <input class="form-control" type="file" name="BlogImgUrl" id="BlogImgUrl">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 form-control-label" for="BlogName">Blog Adı</label>
+                                    <div class="col-sm-8">
+                                        <div class="position-relative has-icon-left">
+                                            <input class="form-control" type="text" placeholder="Blog Adı" name="BlogName" id="BlogName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 form-control-label" for="blogSeoUrl">Blog Url</label>
+                                    <div class="col-sm-8">
+                                        <div class="position-relative has-icon-left">
+                                            <input class="form-control" required type="text" placeholder="Url Girin" name="BlogSeoUrl" id="blogSeoUrl">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 form-control-label" for="blogMetaTitle">Meta Başlığı</label>
+                                    <div class="col-sm-8">
+                                        <div class="position-relative has-icon-left">
+                                            <input class="form-control" type="text" placeholder="Meta Başlığı" name="BlogMetaTitle" id="blogMetaTitle">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 form-control-label" for="blogMetaDesc">Meta Açıklaması</label>
+                                    <div class="col-sm-8">
+                                        <div class="position-relative has-icon-left">
+                                            <input class="form-control" type="text" placeholder="Meta Açıklaması" name="BlogMetaDesc" id="blogMetaDesc">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 form-control-label" for="basicSelect">Kategori Seç</label>
+                                    <div class="col-sm-8">
+                                        <fieldset class="form-group">
+                                            <select class="form-control" name="CategoryID" id="basicSelect">
+                                                <option value="ksm" selected>Kategori</option>
+                                                @foreach (var item in Model.BlogCatList)
+                                                {
+                                                    <option value="@item.ID">@item.CatName</option>
+                                                }
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <textarea name="BlogContent" id="ckeditor" cols="30" rows="15" class="ckeditor">     
+							</textarea>
+                                    
+                                </div>
+                                <button type="button" id="sendCreateData" class="btn btn-success justify-content-center col-xl-5" >Oluştur</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

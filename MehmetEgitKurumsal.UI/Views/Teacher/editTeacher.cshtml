@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "editTeacher";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+@model MehmetEgitKurumsal.UI.Models.TeacherVM
+
+@{
+
+    if (Model.ImgUrlOld == null)
+    {
+        Model.ImgUrlOld = "/Assets/Images/avatar-1.png";
+    }
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sayfa Düzenleme Ekranı</h5>
+
+    </div>
+    <div class="modal-body ">
+        <form class="form form-horizontal" onsubmit="return teacherPost(this)" enctype="multipart/form-data" method="post">
+            <div class="form-group row justify-content-center">
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <img width="150" id="editPreviewTeachImgUrl" src="@Model.ImgUrlOld" class="img-border height-100" />
+                        <input id="pageEditImgHidden" type="text" value="@Model.ImgUrlOld" class="hidden" readonly />
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="editPageImgUrl">Öğretmen Resmi</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="file" name="ImageUrl" id="editTeachImgUrl">
+                        <input type="text" name="ID" value="@Model.ID" class="hidden" readonly />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-body">
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Öğretmen Adı</label>
+                    <div class="col-sm-8">
+                        <input class="form-control row" type="text" id="editTeacherName" name="Name" value="@Model.Name">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Öğretmen Soyadı</label>
+                    <div class="col-sm-8">
+                        <input class="form-control row" type="text" name="Surname" value="@Model.Surname">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Adres</label>
+                    <div class="col-sm-8">
+                        <input class="form-control row" type="text" name="Address" value="@Model.Address">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Telefon</label>
+                    <div class="col-sm-8">
+                        <input class="form-control row" type="text" name="Phone" value="@Model.Phone">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Email</label>
+                    <div class="col-sm-8">
+                        <input class="form-control row" type="email" name="Email" value="@Model.Email">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Alt Başlık</label>
+                    <div class="col-sm-8">
+                        <input class="form-control row" type="text" name="SubTitle" value="@Model.SubTitle">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Açıklama</label>
+                    <div class="col-sm-8">
+
+                        <input class="form-control row" type="text" name="Description" value="@Model.Description">
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="">Twitter</label>
+                    <div class="col-sm-8">
+                        <i class="fa fa-twitter"></i>
+                        <input class="form-control row" type="text" name="TwitterUrl" value="@Model.TwitterUrl">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="editPageUrl">Facebook</label>
+                    <div class="col-sm-8">
+
+                        <input class="form-control row" type="text" name="Description" value="@Model.FacebookUrl">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="editPageUrl">Linkedin</label>
+                    <div class="col-sm-8">
+
+                        <input class="form-control row" type="text" name="Description" value="@Model.LinkedinUrl">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 form-control-label" for="editPageUrl">Instagram</label>
+                    <div class="col-sm-8">
+
+                        <input class="form-control row" type="text" name="Description" value="@Model.InstagramUrl">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="submit" class="btn btn-success btn-block">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

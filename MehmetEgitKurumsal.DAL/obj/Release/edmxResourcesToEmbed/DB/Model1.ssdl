@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MehmetEgitKurumsalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="SortNumber" Type="int" />
+    <Property Name="ActOrPass" Type="bit" />
+    <Property Name="AnContent" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" />
+    <Property Name="SeoUrl" Type="nvarchar(max)" />
+    <Property Name="BlogName" Type="nvarchar" MaxLength="250" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="MetaDescription" Type="nvarchar" MaxLength="160" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="BlogContent" Type="nvarchar(max)" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="BlogCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CatName" Type="nvarchar" MaxLength="250" />
+    <Property Name="CatSeoUrl" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="BlogComment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="AnswerCommentID" Type="int" />
+    <Property Name="BlogID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSurname" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="Topic" Type="nvarchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ContactMain">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSurname" Type="nvarchar" MaxLength="250" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="150" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Galery">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="GeneralSettings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="MetaDescription" Type="nvarchar" MaxLength="160" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="LogoUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="FacebookUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="TwitterUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="InstagramUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="GoogleMapsCode" Type="nvarchar(max)" />
+    <Property Name="UserCount" Type="int" />
+    <Property Name="EducationVideoCount" Type="int" />
+    <Property Name="WatchHour" Type="int" />
+    <Property Name="FooterNote" Type="nvarchar" MaxLength="200" />
+    <Property Name="YoutubeUrl" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Link" Type="nvarchar" MaxLength="250" />
+    <Property Name="SubID" Type="int" />
+    <Property Name="SortNumber" Type="int" />
+    <Property Name="ActOrPass" Type="bit" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Packet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageName" Type="nvarchar(max)" />
+    <Property Name="PacketDesc" Type="nvarchar(max)" />
+    <Property Name="PacketImgUrl" Type="nvarchar(max)" />
+    <Property Name="SeoUrlLink" Type="nvarchar(max)" />
+    <Property Name="PacketPrice" Type="float" />
+    <Property Name="ActOrPass" Type="bit" />
+  </EntityType>
+  <EntityType Name="Page">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="250" />
+    <Property Name="Text" Type="nvarchar(max)" />
+    <Property Name="SeoUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="MetaDescription" Type="nvarchar" MaxLength="160" />
+    <Property Name="ImgUrl" Type="nvarchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Category" Type="int" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="PacketID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="sOrderID" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Slider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="250" />
+    <Property Name="Text" Type="nvarchar" MaxLength="250" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="250" />
+    <Property Name="Link" Type="nvarchar" MaxLength="250" />
+    <Property Name="ButtonName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="30" />
+    <Property Name="Password" Type="nvarchar" MaxLength="30" />
+    <Property Name="Name" Type="nvarchar" MaxLength="30" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="30" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Resume" Type="nvarchar(max)" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" />
+    <Property Name="MemberShipDate" Type="datetime" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="MailKey" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Type" Type="bit" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VideoName" Type="nvarchar" MaxLength="100" />
+    <Property Name="VideoUrl" Type="nvarchar(max)" />
+    <Property Name="VideoDescription" Type="nvarchar(max)" />
+    <Property Name="Preview" Type="bit" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="PacketID" Type="int" />
+    <Property Name="TeacherID" Type="int" />
+    <Property Name="VideoLength" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="VideoEducationTeacher">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="100" />
+    <Property Name="SubTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="TwitterUrl" Type="nvarchar(max)" />
+    <Property Name="InstagramUrl" Type="nvarchar(max)" />
+    <Property Name="FacebookUrl" Type="nvarchar(max)" />
+    <Property Name="LinkedinUrl" Type="nvarchar(max)" />
+    <Property Name="ImgUrl" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_Blog_BlogCategory">
+    <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="0..1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BlogCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BlogComment_Blog">
+    <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+    <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BlogComment">
+        <PropertyRef Name="BlogID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BlogComment_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BlogComment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Packet">
+    <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="PacketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Video_Packet">
+    <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+    <End Role="Video" Type="Self.Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Video">
+        <PropertyRef Name="PacketID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Video_VideoEducationTeacher">
+    <End Role="VideoEducationTeacher" Type="Self.VideoEducationTeacher" Multiplicity="0..1" />
+    <End Role="Video" Type="Self.Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VideoEducationTeacher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Video">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MehmetEgitKurumsalModelStoreContainer">
+    <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogCategory" EntityType="Self.BlogCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BlogComment" EntityType="Self.BlogComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactMain" EntityType="Self.ContactMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Galery" EntityType="Self.Galery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralSettings" EntityType="Self.GeneralSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Packet" EntityType="Self.Packet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideoEducationTeacher" EntityType="Self.VideoEducationTeacher" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Blog_BlogCategory" Association="Self.FK_Blog_BlogCategory">
+      <End Role="BlogCategory" EntitySet="BlogCategory" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BlogComment_Blog" Association="Self.FK_BlogComment_Blog">
+      <End Role="Blog" EntitySet="Blog" />
+      <End Role="BlogComment" EntitySet="BlogComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BlogComment_User" Association="Self.FK_BlogComment_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="BlogComment" EntitySet="BlogComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Packet" Association="Self.FK_Purchase_Packet">
+      <End Role="Packet" EntitySet="Packet" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_User" Association="Self.FK_Purchase_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Video_Packet" Association="Self.FK_Video_Packet">
+      <End Role="Packet" EntitySet="Packet" />
+      <End Role="Video" EntitySet="Video" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Video_VideoEducationTeacher" Association="Self.FK_Video_VideoEducationTeacher">
+      <End Role="VideoEducationTeacher" EntitySet="VideoEducationTeacher" />
+      <End Role="Video" EntitySet="Video" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

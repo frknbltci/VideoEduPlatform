@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ContactMessages";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+@model List<MehmetEgitKurumsal.DAL.DB.Contact>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">İletişim Mesajları Listesi Görüntüleme Ekranı</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div>
+                        <table class="table display nowrap table-striped table-bordered scroll-horizontal">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Ad Soyad</th>
+                                    <th>Telefon</th>
+                                    <th>Mail Adresi</th>
+                                    <th>Mesajlar</th>
+                                    <th>Gönderim Zamanı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.NameSurname</td>
+                                        <td>@item.Phone</td>
+                                        <td>@item.Email</td>
+                                        <td><p>@item.Message</p></td>
+                                        <td>@item.CreatedAt.Value.Day.ToString()/@item.CreatedAt.Value.Month.ToString()/@item.CreatedAt.Value.Year.ToString() @item.CreatedAt.Value.TimeOfDay.ToString() </td>
+                                      
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

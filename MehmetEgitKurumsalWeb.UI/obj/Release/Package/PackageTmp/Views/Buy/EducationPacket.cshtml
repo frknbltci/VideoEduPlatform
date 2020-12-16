@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "EducationPacket";
+    Layout = "~/Views/_LayoutMain.cshtml";
+}
+@model MehmetEgitKurumsal.DAL.DB.Packet
+
+<h5 style="display:flex; text-align:center;">Yapım Aşamasında</h5>
+
+
+@*@{ if (ViewBag.notfound != null)
+        {
+            <h4 style="display:flex; justify-content:center;">@Html.Raw(ViewBag.notfound)</h4>
+        }
+        else if (((MehmetEgitKurumsal.SessionOperations.UserSessionContext)Session["UserSessionContext"]) == null)
+        {
+
+
+            <h5 style="display: flex;
+            color: #5c0404 !important;
+            justify-content: center;">
+                Eğitim paketi satın alabilmek için siteye giriş yapmış olmanız gerekmektedir.
+            </h5>
+
+        }
+        else
+        {
+            var name = ((MehmetEgitKurumsal.SessionOperations.UserSessionContext)Session["UserSessionContext"]).Name;
+            var surname = ((MehmetEgitKurumsal.SessionOperations.UserSessionContext)Session["UserSessionContext"]).Surname;
+            var id = ((MehmetEgitKurumsal.SessionOperations.UserSessionContext)Session["UserSessionContext"]).ID;
+            var Email = ((MehmetEgitKurumsal.SessionOperations.UserSessionContext)Session["UserSessionContext"]).Email;
+
+
+            <div class="modal-body">
+                <form class="form form-horizontal" action="/Buy/sendApi" method="post" enctype="multipart/form-data">
+                    <div class="form-body">
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label" for="editLink">Ad</label>
+                            <div class="col-sm-8">
+                                <div class="position-relative has-icon-left">
+                                    <input readonly class="form-control" type="text" placeholder="Ad" name="Name" value="@name" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">Soyad</label>
+                            <div class="col-sm-8">
+                                <div class="position-relative has-icon-left">
+                                    <input readonly class="form-control" type="text" placeholder="Soyad" name="Surname" value="@surname" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label" for="editLink">Telefon</label>
+                            <div class="col-sm-8">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" placeholder="Telefon" name="Phone" value="" />
+                                    <input readonly class="hidden" style="display:none;" type="text" value="@id" name="UserID" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">E-mail</label>
+                            <div class="col-sm-8">
+                                <div class="position-relative has-icon-left">
+                                    <input readonly class="form-control" type="email" placeholder="E-mail" name="Email" value="@Email" />
+                                    <input readonly class="hidden" style="display:none;" type="text" value="@Model.ID" name="PacketId" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label">Adres</label>
+                            <div class="col-sm-8">
+                                <div class="position-relative has-icon-left">
+                                    <input required class="form-control" type="text" placeholder="Adres" name="Address" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-dialog-centered">
+
+                        <button type="submit" class="btn btn-success btn-block">Satın Al</button>
+                    </div>
+                </form>
+            </div>
+
+
+        }
+
+    }*@
+
+
+
+
+

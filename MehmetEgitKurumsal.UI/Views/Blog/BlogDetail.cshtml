@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "BlogDetail";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+
+
+}
+@model MehmetEgitKurumsal.UI.Models.BlogVM
+    @{ 
+       
+        if (Model.strBlogImgUrl == null)
+        {
+            Model.strBlogImgUrl = "/Assets/Images/noImgMan.jpg";
+        }
+    }
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Blog Düzenleme Ekranı</h5>
+              
+            </div>
+            <div class="modal-body ">
+                <form class="form form-horizontal">
+                    <div class="form-group row justify-content-center">
+                        <div class="col-sm-8">
+                            <div class="position-relative has-icon-left">
+                                <img id="editPreviewBlogImgUrl" src="@Model.strBlogImgUrl" class="img-border height-100" />
+                                <input id="blogEditImgHidden" type="text" value="@Model.strBlogImgUrl" class="hidden" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 form-control-label" for="editBlogImgUrl">Blog  Resmi</label>
+                        <div class="col-sm-8">
+                            <div class="position-relative has-icon-left">
+                                <input class="form-control" type="file" name="editBlogImgUrl" id="editBlogImgUrl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-body">
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label" for="basicSelect">Kategori Seç</label>
+                            <div class="col-sm-8">
+                                <fieldset class="form-group">
+                                    <select class="form-control" name="CategoryID" id="selectEditBlogPopUp">
+                                        <option value="ksm" >Kategori</option>
+                                        @foreach (var item in Model.BlogCatList)
+                                        {
+                                            if (Model.CategoryID==item.ID)
+                                            {
+                                                <option selected value="@item.ID">@item.CatName</option>
+                                            }
+
+                                            <option value="@item.ID">@item.CatName</option>
+                                        }
+                                    </select>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label" for="editBlogName">Blog Adı</label>
+                            <div class="col-sm-8">
+                                <input class="form-control row" type="text" id="editBlogName" name="editBlogName" value=@Model.BlogName>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label" for="editBlogMetaTitle">Meta Başlığı</label>
+                            <div class="col-sm-8">
+                                <input class="form-control row" type="text" id="editBlogMetaTitle" name="editBlogMetaTitle" value=@Model.BlogMetaTitle>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label" for="editBlogMetaDesc">Meta Açıklaması</label>
+                            <div class="col-sm-8">
+                                <input class="form-control row" type="text" id="editBlogMetaDesc" name="editBlogMetaDesc" value=@Model.BlogMetaDesc>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 form-control-label" for="editBlogUrl">Blog Url</label>
+                            <div class="col-sm-8">
+
+                                <input class="form-control row" type="text" id="editBlogUrl" name="editBlogUrl" value=@Model.BlogSeoUrl>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <textarea name="BlogContent" id="ckeditorEditBlog" cols="30" rows="15" class="ckeditor">
+                                    @Model.BlogContent
+                            </textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+       
+                <button blogId="@Model.ID" id="blogEditSend" type="button" class="btn btn-success btn-block">Kaydet</button>
+            </div>
+        </div>
+ 

@@ -1,0 +1,965 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MehmetEgitKurumsalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="SortNumber" Type="int" />
+          <Property Name="ActOrPass" Type="bit" />
+          <Property Name="AnContent" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="SeoUrl" Type="nvarchar(max)" />
+          <Property Name="BlogName" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="160" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="BlogContent" Type="nvarchar(max)" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="BlogCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CatSeoUrl" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="BlogComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="AnswerCommentID" Type="int" />
+          <Property Name="BlogID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSurname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Topic" Type="nvarchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ContactMain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSurname" Type="nvarchar" MaxLength="250" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Galery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="GeneralSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="160" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="LogoUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="FacebookUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="TwitterUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="InstagramUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="GoogleMapsCode" Type="nvarchar(max)" />
+          <Property Name="UserCount" Type="int" />
+          <Property Name="EducationVideoCount" Type="int" />
+          <Property Name="WatchHour" Type="int" />
+          <Property Name="FooterNote" Type="nvarchar" MaxLength="200" />
+          <Property Name="YoutubeUrl" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Link" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubID" Type="int" />
+          <Property Name="SortNumber" Type="int" />
+          <Property Name="ActOrPass" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Packet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageName" Type="nvarchar(max)" />
+          <Property Name="PacketDesc" Type="nvarchar(max)" />
+          <Property Name="PacketImgUrl" Type="nvarchar(max)" />
+          <Property Name="SeoUrlLink" Type="nvarchar(max)" />
+          <Property Name="PacketPrice" Type="float" />
+          <Property Name="ActOrPass" Type="bit" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="SeoUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="160" />
+          <Property Name="ImgUrl" Type="nvarchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Category" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="PacketID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="sOrderID" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="Text" Type="nvarchar" MaxLength="250" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="250" />
+          <Property Name="Link" Type="nvarchar" MaxLength="250" />
+          <Property Name="ButtonName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="30" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="30" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resume" Type="nvarchar(max)" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="MemberShipDate" Type="datetime" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="MailKey" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Type" Type="bit" />
+          <Property Name="Discount" Type="float" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VideoName" Type="nvarchar" MaxLength="100" />
+          <Property Name="VideoUrl" Type="nvarchar(max)" />
+          <Property Name="VideoDescription" Type="nvarchar(max)" />
+          <Property Name="Preview" Type="bit" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="PacketID" Type="int" />
+          <Property Name="TeacherID" Type="int" />
+          <Property Name="VideoLength" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="VideoEducationTeacher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="100" />
+          <Property Name="SubTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="TwitterUrl" Type="nvarchar(max)" />
+          <Property Name="InstagramUrl" Type="nvarchar(max)" />
+          <Property Name="FacebookUrl" Type="nvarchar(max)" />
+          <Property Name="LinkedinUrl" Type="nvarchar(max)" />
+          <Property Name="ImgUrl" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Blog_BlogCategory">
+          <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlogCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogComment_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+          <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BlogComment">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogComment_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BlogComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Packet">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="PacketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_Packet">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="PacketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_VideoEducationTeacher">
+          <End Role="VideoEducationTeacher" Type="Self.VideoEducationTeacher" Multiplicity="0..1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoEducationTeacher">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MehmetEgitKurumsalModelStoreContainer">
+          <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogCategory" EntityType="Self.BlogCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogComment" EntityType="Self.BlogComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactMain" EntityType="Self.ContactMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galery" EntityType="Self.Galery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralSettings" EntityType="Self.GeneralSettings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packet" EntityType="Self.Packet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoEducationTeacher" EntityType="Self.VideoEducationTeacher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Blog_BlogCategory" Association="Self.FK_Blog_BlogCategory">
+            <End Role="BlogCategory" EntitySet="BlogCategory" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogComment_Blog" Association="Self.FK_BlogComment_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="BlogComment" EntitySet="BlogComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogComment_User" Association="Self.FK_BlogComment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BlogComment" EntitySet="BlogComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Packet" Association="Self.FK_Purchase_Packet">
+            <End Role="Packet" EntitySet="Packet" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_User" Association="Self.FK_Purchase_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_Packet" Association="Self.FK_Video_Packet">
+            <End Role="Packet" EntitySet="Packet" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_VideoEducationTeacher" Association="Self.FK_Video_VideoEducationTeacher">
+            <End Role="VideoEducationTeacher" EntitySet="VideoEducationTeacher" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MehmetEgitKurumsalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortNumber" Type="Int32" />
+          <Property Name="ActOrPass" Type="Boolean" />
+          <Property Name="AnContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BlogName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="BlogContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="BlogCategory" Relationship="Self.FK_Blog_BlogCategory" FromRole="Blog" ToRole="BlogCategory" />
+          <NavigationProperty Name="BlogComments" Relationship="Self.FK_BlogComment_Blog" FromRole="Blog" ToRole="BlogComment" />
+        </EntityType>
+        <EntityType Name="BlogCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CatSeoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_BlogCategory" FromRole="BlogCategory" ToRole="Blog" />
+        </EntityType>
+        <EntityType Name="BlogComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnswerCommentID" Type="Int32" />
+          <Property Name="BlogID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_BlogComment_Blog" FromRole="BlogComment" ToRole="Blog" />
+          <NavigationProperty Name="User" Relationship="Self.FK_BlogComment_User" FromRole="BlogComment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ContactMain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSurname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Galery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GeneralSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetaTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LogoUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InstagramUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GoogleMapsCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserCount" Type="Int32" />
+          <Property Name="EducationVideoCount" Type="Int32" />
+          <Property Name="WatchHour" Type="Int32" />
+          <Property Name="FooterNote" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="YoutubeUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubID" Type="Int32" />
+          <Property Name="SortNumber" Type="Int32" />
+          <Property Name="ActOrPass" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Packet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PacketDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PacketImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoUrlLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PacketPrice" Type="Double" />
+          <Property Name="ActOrPass" Type="Boolean" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Packet" FromRole="Packet" ToRole="Purchase" />
+          <NavigationProperty Name="Videos" Relationship="Self.FK_Video_Packet" FromRole="Packet" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="ImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Category" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="PacketID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="sOrderID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Packet" Relationship="Self.FK_Purchase_Packet" FromRole="Purchase" ToRole="Packet" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Purchase_User" FromRole="Purchase" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ButtonName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resume" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MemberShipDate" Type="DateTime" Precision="3" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="MailKey" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Type" Type="Boolean" />
+          <Property Name="Discount" Type="Double" />
+          <NavigationProperty Name="BlogComments" Relationship="Self.FK_BlogComment_User" FromRole="User" ToRole="BlogComment" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_User" FromRole="User" ToRole="Purchase" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VideoName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VideoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VideoDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Preview" Type="Boolean" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="PacketID" Type="Int32" />
+          <Property Name="TeacherID" Type="Int32" />
+          <Property Name="VideoLength" Type="Time" Precision="7" />
+          <NavigationProperty Name="Packet" Relationship="Self.FK_Video_Packet" FromRole="Video" ToRole="Packet" />
+          <NavigationProperty Name="VideoEducationTeacher" Relationship="Self.FK_Video_VideoEducationTeacher" FromRole="Video" ToRole="VideoEducationTeacher" />
+        </EntityType>
+        <EntityType Name="VideoEducationTeacher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SubTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InstagramUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedinUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Videos" Relationship="Self.FK_Video_VideoEducationTeacher" FromRole="VideoEducationTeacher" ToRole="Video" />
+        </EntityType>
+        <Association Name="FK_Blog_BlogCategory">
+          <End Role="BlogCategory" Type="Self.BlogCategory" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BlogCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogComment_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+          <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BlogComment">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogComment_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="BlogComment" Type="Self.BlogComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BlogComment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Packet">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="PacketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_Packet">
+          <End Role="Packet" Type="Self.Packet" Multiplicity="0..1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="PacketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_VideoEducationTeacher">
+          <End Role="VideoEducationTeacher" Type="Self.VideoEducationTeacher" Multiplicity="0..1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VideoEducationTeacher">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MehmetEgitKurumsalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Announcements" EntityType="Self.Announcement" />
+          <EntitySet Name="Blogs" EntityType="Self.Blog" />
+          <EntitySet Name="BlogCategories" EntityType="Self.BlogCategory" />
+          <EntitySet Name="BlogComments" EntityType="Self.BlogComment" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="ContactMains" EntityType="Self.ContactMain" />
+          <EntitySet Name="Galeries" EntityType="Self.Galery" />
+          <EntitySet Name="GeneralSettings" EntityType="Self.GeneralSetting" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Packets" EntityType="Self.Packet" />
+          <EntitySet Name="Pages" EntityType="Self.Page" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="Sliders" EntityType="Self.Slider" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Videos" EntityType="Self.Video" />
+          <EntitySet Name="VideoEducationTeachers" EntityType="Self.VideoEducationTeacher" />
+          <AssociationSet Name="FK_Blog_BlogCategory" Association="Self.FK_Blog_BlogCategory">
+            <End Role="BlogCategory" EntitySet="BlogCategories" />
+            <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogComment_Blog" Association="Self.FK_BlogComment_Blog">
+            <End Role="Blog" EntitySet="Blogs" />
+            <End Role="BlogComment" EntitySet="BlogComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogComment_User" Association="Self.FK_BlogComment_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="BlogComment" EntitySet="BlogComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Packet" Association="Self.FK_Purchase_Packet">
+            <End Role="Packet" EntitySet="Packets" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_Packet" Association="Self.FK_Video_Packet">
+            <End Role="Packet" EntitySet="Packets" />
+            <End Role="Video" EntitySet="Videos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_User" Association="Self.FK_Purchase_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_VideoEducationTeacher" Association="Self.FK_Video_VideoEducationTeacher">
+            <End Role="VideoEducationTeacher" EntitySet="VideoEducationTeachers" />
+            <End Role="Video" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MehmetEgitKurumsalModelStoreContainer" CdmEntityContainer="MehmetEgitKurumsalEntities">
+          <EntitySetMapping Name="Announcements">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Announcement">
+              <MappingFragment StoreEntitySet="Announcement">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+                <ScalarProperty Name="ActOrPass" ColumnName="ActOrPass" />
+                <ScalarProperty Name="AnContent" ColumnName="AnContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="SeoUrl" ColumnName="SeoUrl" />
+                <ScalarProperty Name="BlogName" ColumnName="BlogName" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="BlogContent" ColumnName="BlogContent" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogCategories">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.BlogCategory">
+              <MappingFragment StoreEntitySet="BlogCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="CatSeoUrl" ColumnName="CatSeoUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogComments">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.BlogComment">
+              <MappingFragment StoreEntitySet="BlogComment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="AnswerCommentID" ColumnName="AnswerCommentID" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactMains">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.ContactMain">
+              <MappingFragment StoreEntitySet="ContactMain">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galeries">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Galery">
+              <MappingFragment StoreEntitySet="Galery">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralSettings">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.GeneralSetting">
+              <MappingFragment StoreEntitySet="GeneralSettings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="FacebookUrl" ColumnName="FacebookUrl" />
+                <ScalarProperty Name="TwitterUrl" ColumnName="TwitterUrl" />
+                <ScalarProperty Name="InstagramUrl" ColumnName="InstagramUrl" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="GoogleMapsCode" ColumnName="GoogleMapsCode" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="EducationVideoCount" ColumnName="EducationVideoCount" />
+                <ScalarProperty Name="WatchHour" ColumnName="WatchHour" />
+                <ScalarProperty Name="FooterNote" ColumnName="FooterNote" />
+                <ScalarProperty Name="YoutubeUrl" ColumnName="YoutubeUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="SubID" ColumnName="SubID" />
+                <ScalarProperty Name="SortNumber" ColumnName="SortNumber" />
+                <ScalarProperty Name="ActOrPass" ColumnName="ActOrPass" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packets">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Packet">
+              <MappingFragment StoreEntitySet="Packet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="PacketDesc" ColumnName="PacketDesc" />
+                <ScalarProperty Name="PacketImgUrl" ColumnName="PacketImgUrl" />
+                <ScalarProperty Name="SeoUrlLink" ColumnName="SeoUrlLink" />
+                <ScalarProperty Name="PacketPrice" ColumnName="PacketPrice" />
+                <ScalarProperty Name="ActOrPass" ColumnName="ActOrPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Page">
+              <MappingFragment StoreEntitySet="Page">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="SeoUrl" ColumnName="SeoUrl" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="PacketID" ColumnName="PacketID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="sOrderID" ColumnName="sOrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sliders">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Slider">
+              <MappingFragment StoreEntitySet="Slider">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="ButtonName" ColumnName="ButtonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="MemberShipDate" ColumnName="MemberShipDate" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="MailKey" ColumnName="MailKey" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+                <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+                <ScalarProperty Name="VideoDescription" ColumnName="VideoDescription" />
+                <ScalarProperty Name="Preview" ColumnName="Preview" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="PacketID" ColumnName="PacketID" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="VideoLength" ColumnName="VideoLength" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoEducationTeachers">
+            <EntityTypeMapping TypeName="MehmetEgitKurumsalModel.VideoEducationTeacher">
+              <MappingFragment StoreEntitySet="VideoEducationTeacher">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TwitterUrl" ColumnName="TwitterUrl" />
+                <ScalarProperty Name="InstagramUrl" ColumnName="InstagramUrl" />
+                <ScalarProperty Name="FacebookUrl" ColumnName="FacebookUrl" />
+                <ScalarProperty Name="LinkedinUrl" ColumnName="LinkedinUrl" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

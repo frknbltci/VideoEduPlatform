@@ -1,0 +1,6 @@
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\bin\Debug\MehmetEgitKurumsal.pdb
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.csprojAssemblyReference.cache
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.csproj.CoreCompileInputs.cache
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.dll
+C:\Users\fbalt\source\repos\MehmetEgitKurumsal\MehmetEgitKurumsal\obj\Debug\MehmetEgitKurumsal.pdb

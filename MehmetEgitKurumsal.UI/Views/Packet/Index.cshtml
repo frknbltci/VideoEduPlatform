@@ -1,0 +1,271 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+
+@model List<MehmetEgitKurumsal.DAL.DB.Packet>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Paketleri Düzenle</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <button type="button" data-toggle="modal" data-target="#addPacket" class="btn btn-primary">Paket Ekle</button>
+
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-striped table-bordered default-ordering">
+                            <thead>
+                                <tr>
+                                    <th>Paket Adı</th>
+                                    <th>Paket Açıklaması</th>
+                                    <th>Düzenle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach(var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.PackageName</td>
+                                        <td>@item.PacketDesc</td>
+                                        
+
+                                        @if (item.ActOrPass == true)
+                                        {
+                                        
+                                            <td>
+                                                <button data-toggle="modal" packid="@item.ID" data-target="#editPacket" class="btn btn-warning btn-sm PacketEdit">Düzenle</button>
+                                                <button data-toggle="modal" packid="@item.ID" data-target="#PacketMakePassive" class="btn btn-success btn-sm PacketActOrPass">Aktif</button>
+                                            </td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <button data-toggle="modal" packid="@item.ID" data-target="#editPacket" class="btn btn-warning btn-sm PacketEdit">Düzenle</button>
+                                                <button data-toggle="modal" packid="@item.ID" data-target="#PacketMakeActive" class="btn btn-secondary btn-sm PacketActOrPass">Pasif</button>
+                                            </td>
+                                        }
+
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* editPacket*@
+<div class="modal fade" id="editPacket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Paket Düzenleme Ekranı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal" method="post" enctype="multipart/form-data" onsubmit="return PacketEditPost(this)">
+                    <div class="form-body">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="position-relative has-icon-left">
+                                    <img width="150" id="editPacketPreview" class="center" src="~/Assets/Images/noImgMan.jpg" />
+                                    <input type="text" style="display:none;" class="hidden" name="hiddenPacketId" id="hiddenPID" />
+                                    <input type="text" style="display:none;" class="hidden" name="hiddenOldImg" id="hiddenOldImg" />
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketName">Paket Resmi</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="file" name="PacketImgUrl" id="PacketImgUrl">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketName">Paket Adı</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" required placeholder="Paket Adı" name="PackageName" id="PacketName">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketDesc">Paket AçıklamaSı</label>
+                            <div class="input-group col-sm-9">
+                                <textarea class="form-control" required aria-label="With textarea" placeholder="Paket Açıklaması" name="PacketDesc" id="PacketDesc"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label"  for="PacketName">Paket Link</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" required type="text" placeholder="Paket Linki" name="SeoUrlLink" id="PacketLink">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketName">Paket Ücreti</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" required type="number" step="0.01"  placeholder="Paket Ücreti" name="PacketPrice" id="PacketPrice">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                        <button id="editPacketSend" type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+@*Add Menu*@
+
+
+<div class="modal fade" id="addPacket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Paket Ekleme Ekranı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form form-horizontal" method="post" enctype="multipart/form-data" onsubmit="return PacketAddPost(this)">
+                    <div class="form-body">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <div class="position-relative has-icon-left">
+                                    <img width="150"  id="addPacketPreview" class="center" src="~/Assets/Images/noImgMan.jpg" />
+                                    <input type="text" style="display:none;" class="hidden" name="hiddenPacketId" id="hiddenPID" />
+                                    <input type="text" style="display:none;" class="hidden" name="hiddenOldImg" id="hiddenOldImg" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketName">Paket Resmi</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="file" name="PacketImgUrl" id="PacketImgUrlAdd">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketName">Paket Adı</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" type="text" required placeholder="Paket Adı" name="PackageName" id="PacketName">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketDesc">Paket AçıklamaSı</label>
+                            <div class="input-group col-sm-9">
+                                <textarea class="form-control" required aria-label="With textarea" placeholder="Paket Açıklaması" name="PacketDesc" id="PacketDesc"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketName">Paket Link</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" required type="text" placeholder="Paket Linki" name="SeoUrlLink" id="PacketLink">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label" for="PacketName">Paket Ücreti</label>
+                            <div class="col-sm-9">
+                                <div class="position-relative has-icon-left">
+                                    <input class="form-control" required type="number" step="0.01" placeholder="Paket Ücreti" name="PacketPrice" id="PacketPrice">
+                                    <div class="form-control-position pl-1"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                        <button  type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- make passive -->
+<div class="modal fade" id="PacketMakePassive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Paketi Pasifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makePassivePacketYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="PacketMakeActive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Paketi Aktifleştirmek İstiyormusunuz ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">İptal</button>
+                <button id="makeActivePacketYesBtn" type="submit" class="btn btn-success">Evet</button>
+            </div>
+        </div>
+    </div>
+</div>

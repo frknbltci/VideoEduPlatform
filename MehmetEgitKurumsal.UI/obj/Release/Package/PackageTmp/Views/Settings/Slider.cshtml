@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Slider";
+    Layout = "~/Views/Shared/_LayoutAdminPage.cshtml";
+}
+@model MehmetEgitKurumsal.DAL.DB.Slider
+
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Sitenin Genel Ayarlarını Düzenleme Ekranı</h5>
+</div>
+<div class="modal-body">
+    <form class="form form-horizontal" id="editGeneralSubmit" method="post" enctype="multipart/form-data" onsubmit="return SliderPost(this)">
+        <div class="form-body">
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="LogoUrl">Logo</label>
+                @if (Model.ImageUrl != null || Model.ImageUrl != "")
+                {
+                    <img id="previewSliderImgUrl" width="200" src="@Model.ImageUrl" class="rounded-circle img-border height-100" />
+                    <input readonly type="text" name="ImgUrlOld" id="LogoUrlOld" class="hidden" value="@Model.ImageUrl" />
+
+                }
+                else
+                {
+                    <img id="previewGeneralLogoUrl" src="~/Assets/Images/demo3.png" class="rounded-circle img-border height-100" />
+                }
+                <div class="col-sm-4">
+
+                    <input class="form-control" type="file" name="ImageUrl" id="SliderImageUrl">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalWatchHour">Buton Yazısı</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" name="ButtonName" value="@Model.ButtonName" placeholder="Buton Yazısı" >
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalVideoCount">Açıklama Yazısı</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" name="Text" value="@Model.Text" placeholder="Açıklama Yazısı ">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalFooterNote">Başlık</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" name="Title" value="@Model.Title" placeholder="Başlık" >
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 form-control-label" for="generalFooterNote">Link</label>
+                <div class="col-sm-8">
+                    <div class="position-relative has-icon-left">
+                        <input class="form-control" type="text" name="Link" value="@Model.Link" placeholder="Link ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-dialog-centered">
+            <button  type="submit" class="btn btn-success col-xl-5">Kaydet</button>
+        </div>
+    </form>
+</div>
+

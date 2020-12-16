@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutMain.cshtml";
+    MehmetEgitKurumsal.StringOperations.StringOperations operations = new MehmetEgitKurumsal.StringOperations.StringOperations();
+}
+@using PagedList.Mvc;
+@model  MehmetEgitKurumsalWeb.UI.Models.BlogVM
+
+<div class="page-section" style="background:#f9fafa;margin-bottom:82px;">
+
+    <div class="container">
+
+        <div class="page-content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            <div class="row">
+
+                <div class="cs-section-title">
+
+                    <h2>BLOG YAZILARIMIZ</h2>
+
+                </div>
+
+
+                @foreach (var item in Model.BlogList)
+                {
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+
+                        <div class="cs-courses courses-grid">
+
+                            <div class="cs-media">
+                                <a href="@Url.Action("Details","Blog",new {SeoUrl=item.SeoUrl})">
+                                    <figure>
+                                        @{ if (item.ImageUrl==null)
+                                            {
+                                                item.ImageUrl = "/Assets/images/demo.png";
+                                            }}
+                                        <img src="@item.ImageUrl" class="img-responsive" style="width:350px!important; height: 220px!important; margin-left:auto; margin-right: auto">
+
+                                    </figure>
+                                </a>
+
+                            </div>
+
+                            <div class="cs-text">
+
+
+
+                                <div class="cs-post-titless">
+
+                                    <h6 class="text-center"><a href="/tyt-ayt-ozel-ders-al/">@item.BlogName</a></h6>
+
+                                </div>
+
+                                <p class="text-center" style="margin-left:auto; margin-right:auto; width:100px; font-weight: bold; color: #222!important;"></p>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                }
+
+
+            </div>
+
+            @Html.PagedListPager((PagedList.IPagedList)Model.BlogList, sayfa => Url.Action("Index", new { sayfa }))
+
+        </div>
+
+    </div>
+
+</div>
